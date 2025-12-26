@@ -423,7 +423,7 @@ const WorkflowRenderer: React.FC<{ content: string }> = ({ content }) => {
                         <div key={i} style={{ display: 'flex', gap: '12px', marginBottom: '8px', paddingLeft: '8px' }}>
                             <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--omnicom-coral)', marginTop: '10px', flexShrink: 0 }}></div>
                             <p style={{ margin: 0, fontSize: '1rem', color: 'rgba(255,255,255,0.8)' }}>
-                                {parts.map((part, pi) => (
+                                {parts.map((part: string, pi: number) => (
                                     pi % 2 === 1 ? <strong key={pi} style={{ color: 'var(--omnicom-blue)', fontWeight: 600 }}>{part}</strong> : part
                                 ))}
                             </p>
@@ -435,7 +435,7 @@ const WorkflowRenderer: React.FC<{ content: string }> = ({ content }) => {
                     const parts = line.split('**');
                     return (
                         <p key={i} style={{ marginBottom: '16px', fontSize: '1rem', color: 'rgba(255,255,255,0.7)' }}>
-                            {parts.map((part, pi) => (
+                            {parts.map((part: string, pi: number) => (
                                 pi % 2 === 1 ? <strong key={pi} style={{ color: 'var(--omnicom-blue)', fontWeight: 600 }}>{part}</strong> : part
                             ))}
                         </p>

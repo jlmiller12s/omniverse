@@ -1,0 +1,17 @@
+src/hooks/useWorkflows.ts(26,9): error TS2769: No overload matches this call.
+  Overload 1 of 3, '(options: DefinedInitialDataOptions<unknown, Error, unknown, readonly ["workflows", "list", Partial<WorkflowListOptions>]>, queryClient?: QueryClient | undefined): DefinedUseQueryResult<...>', gave the following error.
+    Object literal may only specify known properties, and 'onSuccess' does not exist in type 'DefinedInitialDataOptions<unknown, Error, unknown, readonly ["workflows", "list", Partial<WorkflowListOptions>]>'.
+  Overload 2 of 3, '(options: UndefinedInitialDataOptions<PaginatedResult<Workflow>, Error, PaginatedResult<Workflow>, readonly ["workflows", "list", Partial<WorkflowListOptions>]>, queryClient?: QueryClient | undefined): UseQueryResult<...>', gave the following error.
+    Object literal may only specify known properties, and 'onSuccess' does not exist in type 'UndefinedInitialDataOptions<PaginatedResult<Workflow>, Error, PaginatedResult<Workflow>, readonly ["workflows", "list", Partial<WorkflowListOptions>]>'.
+  Overload 3 of 3, '(options: UseQueryOptions<PaginatedResult<Workflow>, Error, PaginatedResult<Workflow>, readonly ["workflows", "list", Partial<WorkflowListOptions>]>, queryClient?: QueryClient | undefined): UseQueryResult<...>', gave the following error.
+    Object literal may only specify known properties, and 'onSuccess' does not exist in type 'UseQueryOptions<PaginatedResult<Workflow>, Error, PaginatedResult<Workflow>, readonly ["workflows", "list", Partial<WorkflowListOptions>]>'.
+src/hooks/useWorkflows.ts(26,21): error TS7006: Parameter 'data' implicitly has an 'any' type.
+src/hooks/useWorkflows.ts(42,9): error TS2769: No overload matches this call.
+  Overload 1 of 3, '(options: DefinedInitialDataOptions<unknown, Error, unknown, readonly ["workflows", "detail", string]>, queryClient?: QueryClient | undefined): DefinedUseQueryResult<...>', gave the following error.
+    Object literal may only specify known properties, and 'onSuccess' does not exist in type 'DefinedInitialDataOptions<unknown, Error, unknown, readonly ["workflows", "detail", string]>'.
+  Overload 2 of 3, '(options: UndefinedInitialDataOptions<Workflow, Error, Workflow, readonly ["workflows", "detail", string]>, queryClient?: QueryClient | undefined): UseQueryResult<...>', gave the following error.
+    Object literal may only specify known properties, and 'onSuccess' does not exist in type 'UndefinedInitialDataOptions<Workflow, Error, Workflow, readonly ["workflows", "detail", string]>'.
+  Overload 3 of 3, '(options: UseQueryOptions<Workflow, Error, Workflow, readonly ["workflows", "detail", string]>, queryClient?: QueryClient | undefined): UseQueryResult<...>', gave the following error.
+    Object literal may only specify known properties, and 'onSuccess' does not exist in type 'UseQueryOptions<Workflow, Error, Workflow, readonly ["workflows", "detail", string]>'.
+src/hooks/useWorkflows.ts(42,21): error TS7006: Parameter 'data' implicitly has an 'any' type.
+src/providers/QueryProvider.tsx(10,13): error TS2353: Object literal may only specify known properties, and 'cacheTime' does not exist in type 'OmitKeyof<QueryObserverOptions<unknown, Error, unknown, unknown, readonly unknown[], never>, "suspense" | "queryKey", "strictly">'.

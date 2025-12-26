@@ -1,0 +1,124 @@
+// Prisma Schema for Multi-Tenant Workflow Engine
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Use SQLite for local dev, PostgreSQL for production
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ============ TENANTS ============
+
+model Tenant {
+  id          String   @id @default(cuid())
+  name        String
+  domain      String   @unique
+  logo        String?
+  plan        String   @default("STARTER")
+  settings    String   @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  users       User[]
+  workflows   Workflow[]
+  teams       Team[]
+  invitations Invitation[]
+}
+
+// ============ USERS ============
+
+model User {
+  id            String     @id @default(cuid())
+  email         String     @unique
+  passwordHash  String
+  name          String
+  avatar        String?
+  role          String     @default("MEMBER")
+  status        String     @default("ACTIVE")
+  department    String?
+  title         String?
+  permissions   String     @default("[]")
+  lastLoginAt   DateTime?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  // Relations
+  tenantId      String
+  tenant        Tenant     @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  workflows     Workflow[] @relation("CreatedBy")
+  teamMemberships TeamMember[]
+  invitationsSent Invitation[] @relation("InvitedBy")
+}
+
+// ============ WORKFLOWS ============
+
+model Workflow {
+  id          String   @id @default(cuid())
+  title       String
+  type        String
+  status      String   @default("DRAFT")
+  priority    String   @default("MEDIUM")
+  client      String?
+  content     String
+  metadata    String   @default("{}")
+  archivedAt  DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  tenantId    String
+  tenant      Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  createdById String
+  createdBy   User     @relation("CreatedBy", fields: [createdById], references: [id])
+}
+
+// ============ TEAMS ============
+
+model Team {
+  id          String       @id @default(cuid())
+  name        String
+  description String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  // Relations
+  tenantId    String
+  tenant      Tenant       @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  members     TeamMember[]
+}
+
+model TeamMember {
+  id        String   @id @default(cuid())
+  role      String   @default("member")
+  joinedAt  DateTime @default(now())
+
+  // Relations
+  teamId    String
+  team      Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([teamId, userId])
+}
+
+// ============ INVITATIONS ============
+
+model Invitation {
+  id          String   @id @default(cuid())
+  email       String
+  role        String   @default("MEMBER")
+  status      String   @default("PENDING")
+  token       String   @unique
+  expiresAt   DateTime
+  createdAt   DateTime @default(now())
+
+  // Relations
+  tenantId    String
+  tenant      Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  invitedById String
+  invitedBy   User     @relation("InvitedBy", fields: [invitedById], references: [id])
+}

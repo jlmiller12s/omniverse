@@ -1,0 +1,16 @@
+# Railway Deployment Configuration
+[build]
+builder = "nixpacks"
+buildCommand = "npm install && npx prisma generate && npm run build"
+
+[deploy]
+startCommand = "npm start"
+healthcheckPath = "/health"
+healthcheckTimeout = 300
+
+[[services]]
+name = "omniverse-api"
+port = 3001
+
+[variables]
+NODE_ENV = "production"

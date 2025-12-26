@@ -1,4 +1,5 @@
 // React Query Hooks for Workflows
+import { useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { workflowService } from '../services';
 import { useWorkflowStore } from '../store';
@@ -19,14 +20,19 @@ export const workflowKeys = {
 export function useWorkflows(options?: Partial<WorkflowListOptions>) {
     const setWorkflows = useWorkflowStore((state) => state.setWorkflows);
 
-    return useQuery({
+    const query = useQuery({
         queryKey: workflowKeys.list(options || {}),
         queryFn: () => workflowService.getAll(options),
         staleTime: 1000 * 60 * 5, // 5 minutes
-        onSuccess: (data) => {
-            setWorkflows(data.items);
-        },
     });
+
+    useEffect(() => {
+        if (query.data) {
+            setWorkflows(query.data.items);
+        }
+    }, [query.data, setWorkflows]);
+
+    return query;
 }
 
 /**
@@ -35,14 +41,19 @@ export function useWorkflows(options?: Partial<WorkflowListOptions>) {
 export function useWorkflow(id: string) {
     const selectWorkflow = useWorkflowStore((state) => state.selectWorkflow);
 
-    return useQuery({
+    const query = useQuery({
         queryKey: workflowKeys.detail(id),
         queryFn: () => workflowService.getById(id),
         enabled: !!id,
-        onSuccess: (data) => {
-            selectWorkflow(data);
-        },
     });
+
+    useEffect(() => {
+        if (query.data) {
+            selectWorkflow(query.data);
+        }
+    }, [query.data, selectWorkflow]);
+
+    return query;
 }
 
 /**

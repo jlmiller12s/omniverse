@@ -642,7 +642,7 @@ const App: React.FC = () => {
                                         <DashboardCard title="Upcoming Deadlines" value={currentPersona === 'Approver' ? "8" : "4"} color="var(--omnicom-coral)" />
                                     </div>
 
-                                    <div style={{ marginTop: '40px' }}>
+                                    <div style={{ marginTop: '64px' }}>
                                         <h3 style={{ marginBottom: '32px', fontSize: '1.2rem', color: 'white' }}>Quick Workflows</h3>
                                         <div id="quick-workflows-area" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
                                             <WorkflowTemplateCard icon={<Zap size={20} />} title="Creative Brief" onClick={() => setCurrentView('forge')} />

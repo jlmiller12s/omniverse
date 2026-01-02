@@ -643,7 +643,7 @@ const App: React.FC = () => {
                                     </div>
 
                                     <div style={{ marginTop: '40px' }}>
-                                        <h3 style={{ marginBottom: '20px', fontSize: '1.2rem', color: 'white' }}>Quick Workflows</h3>
+                                        <h3 style={{ marginBottom: '32px', fontSize: '1.2rem', color: 'white' }}>Quick Workflows</h3>
                                         <div id="quick-workflows-area" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
                                             <WorkflowTemplateCard icon={<Zap size={20} />} title="Creative Brief" onClick={() => setCurrentView('forge')} />
                                             <WorkflowTemplateCard icon={<Bell size={20} />} title="IT Incident" onClick={() => setCurrentView('forge')} />
@@ -931,14 +931,14 @@ const WorkflowTemplateCard: React.FC<{ icon: React.ReactNode, title: string, onC
         whileTap={{ scale: 0.98 }}
         onClick={onClick}
         style={{
-            padding: '20px',
+            padding: '32px',
             borderRadius: '16px',
             backgroundColor: 'rgba(255,255,255,0.03)',
             border: '1px solid var(--border-subtle)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '12px',
+            gap: '20px',
             cursor: 'pointer',
             textAlign: 'center',
             transition: 'border-color 0.2s',

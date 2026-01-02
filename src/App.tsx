@@ -643,7 +643,7 @@ const App: React.FC = () => {
                                     </div>
 
                                     <div style={{ marginTop: '64px' }}>
-                                        <h3 style={{ marginBottom: '32px', fontSize: '1.2rem', color: 'white' }}>Quick Workflows</h3>
+                                        <h3 style={{ marginBottom: '32px', marginLeft: '10px', fontSize: '1.2rem', color: 'white' }}>Quick Workflows</h3>
                                         <div id="quick-workflows-area" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
                                             <WorkflowTemplateCard icon={<Zap size={20} />} title="Creative Brief" onClick={() => setCurrentView('forge')} />
                                             <WorkflowTemplateCard icon={<Bell size={20} />} title="IT Incident" onClick={() => setCurrentView('forge')} />

@@ -631,7 +631,7 @@ const App: React.FC = () => {
                     </div>
                 </header>
 
-                <div className="view-container" style={{ padding: '32px', flex: 1, opacity: 0 }}>
+                <div className="view-container" style={{ padding: '64px', flex: 1, opacity: 0 }}>
                     <AnimatePresence mode="wait">
                         <div key={currentView + currentPersona}>
                             {currentView === 'dashboard' && (

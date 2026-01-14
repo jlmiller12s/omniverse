@@ -428,11 +428,11 @@ const App: React.FC = () => {
             </motion.aside>
 
             {/* Main Content */}
-            <main style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <main style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: '100vh', margin: '0 2rem' }}>
                 <header style={{
                     height: 'var(--header-height)',
                     backgroundColor: 'var(--bg-surface)',
-                    padding: '0 32px',
+                    padding: '0',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',

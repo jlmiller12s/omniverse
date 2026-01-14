@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:gh": "tsc && vite build --base=/omniverse/",
     "preview": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build:gh",
     "deploy": "gh-pages -d dist"
   },
   "keywords": [],
@@ -27,6 +28,7 @@
     "zustand": "^5.0.9"
   },
   "devDependencies": {
+    "@rollup/rollup-win32-x64-msvc": "^4.55.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.2",

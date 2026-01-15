@@ -532,7 +532,14 @@ const App: React.FC = () => {
                                             <div style={{ padding: '20px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                                 <h3 style={{ margin: 0, fontSize: '1rem', color: 'white' }}>Notifications</h3>
                                                 <button
-                                                    onClick={() => setNotifications(notifications.map(n => ({ ...n, read: true })))}
+                                                    onClick={() => {
+                                                        const notificationIds = notifications.map(n => n.id);
+                                                        notificationIds.forEach((id, index) => {
+                                                            setTimeout(() => {
+                                                                setNotifications(prev => prev.filter(n => n.id !== id));
+                                                            }, index * 150);
+                                                        });
+                                                    }}
                                                     style={{ fontSize: '0.75rem', color: 'var(--omnicom-blue)', background: 'transparent', border: 'none', cursor: 'pointer' }}
                                                 >
                                                     Mark all read
